@@ -3,6 +3,7 @@ package com.example.service;
 import com.example.algorithms.PrimesAlgorithm;
 import com.example.service.impl.PrimesServiceImpl;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.mockito.InjectMocks;
 import org.mockito.MockitoAnnotations;
@@ -46,6 +47,7 @@ public class PrimesServiceTest {
         assertTrue(primes.contains(19L));
     }
 
+    @Ignore
     @Test
     public void primesFor20RecursiveAlgo() {
         List<Long> primes = primesService.getPrimes(20L, PrimesAlgorithm.BasicRecursive);
