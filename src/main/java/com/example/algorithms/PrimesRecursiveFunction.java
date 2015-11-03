@@ -28,14 +28,14 @@ public class PrimesRecursiveFunction implements Function<Long, List<Long>> {
 
     private List<Long> getPrimes(Long from, Long to, List<Long> primes) {
 
-        if(to < from) {
-            return primes;
+        if(to <= 1 || to < from) {
+            return Collections.emptyList();
         }
 
-        if(to % from == 0) {
-            primes.addAll(getPrimes(to / from, from, primes));
-            factors.add(from);
-            return factors;
+        if(PrimePredicate.isPrime(from)) {
+            primes.add(from);
+            primes.addAll(getPrimes(from + 1, to, primes));
+            return primes;
         } else {
             return getPrimes(from + 1, to, primes);
         }
