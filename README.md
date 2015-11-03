@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/jmbataller/spring-boot-primes-sample.svg?branch=master)](https://travis-ci.org/jmbataller/spring-boot-primes-sample)
+
 # spring-boot-primes-sample
 
 Requirements
