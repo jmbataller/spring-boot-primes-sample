@@ -1,5 +1,6 @@
 package com.example.rest;
 
+import com.example.algorithms.PrimesAlgorithm;
 import com.example.domain.PrimesResponse;
 import com.example.service.PrimesService;
 import org.apache.logging.log4j.LogManager;
@@ -24,11 +25,11 @@ public class PrimesController {
 
     @RequestMapping(value = "/{" + PARAM_INITIAL + "}", method = RequestMethod.GET, produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
     @ResponseStatus(HttpStatus.OK)
-    public PrimesResponse findParticipants(
-            @PathVariable(PARAM_INITIAL) long initial,
-            @RequestParam(value = PARAM_ALGORITHM, required = false) String algorithm) {
+    public PrimesResponse getPrimes(
+            @PathVariable(PARAM_INITIAL) Long initial,
+            @RequestParam(value = PARAM_ALGORITHM, required = false, defaultValue = ALGORITHM_BASIC_ITER) String algorithm) {
         LOGGER.info("calculating primes for " + initial);
-        List<Long> primes = primesService.getPrimes(initial);
+        List<Long> primes = primesService.getPrimes(initial, PrimesAlgorithm.valueOf(algorithm));
         return PrimesResponse.create(initial, primes);
     }
 }

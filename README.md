@@ -26,6 +26,13 @@ or
 java -jar target/spring-boot-primes-sample-0.0.1-SNAPSHOT.jar
 ```
 
+Tests
+---------------
+
+```
+mvn test
+```
+
 API:
 ---------------
 

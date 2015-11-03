@@ -117,9 +117,6 @@
                     <excludes>
                         <exclude>**/*IntegrationTest</exclude>
                     </excludes>
-                    <environmentVariables>
-                        <SUNRISE_PROPS>${basedir}/src/test/resources/test-config.properties</SUNRISE_PROPS>
-                    </environmentVariables>
                 </configuration>
             </plugin>
 

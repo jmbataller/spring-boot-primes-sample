@@ -6,4 +6,7 @@ public interface RestConstants {
 
     String PARAM_INITIAL = "initial";
     String PARAM_ALGORITHM = "algorithm";
+
+    String ALGORITHM_BASIC_ITER = "BasicIterative";
+    String ALGORITHM_BASIC_PARAL_ITER = "BasicParallelIterative";
 }

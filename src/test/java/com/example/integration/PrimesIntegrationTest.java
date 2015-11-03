@@ -1,20 +1,13 @@
 package com.example.integration;
 
-import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.server.MvcResult;
 
-import java.util.List;
-import java.util.Map;
-
-import static com.example.rest.RestConstants.PRIMES_ENDPOINT;
+import static com.example.rest.RestConstants.*;
+import static org.hamcrest.Matchers.hasSize;
 import static org.springframework.test.web.server.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.server.result.MockMvcResultMatchers.*;
-import static org.hamcrest.Matchers.*;
-import static org.mockito.Mockito.*;
-
-import static org.junit.Assert.*;
 
 public class PrimesIntegrationTest extends AbstractIntegrationTest {
 
@@ -75,6 +68,41 @@ public class PrimesIntegrationTest extends AbstractIntegrationTest {
         MvcResult result = mockMvc.perform(get(PRIMES_ENDPOINT + "/xxx")
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isBadRequest())
+                .andReturn();
+
+        LOGGER.info(result.getResponse().getContentAsString());
+    }
+
+    @Test
+    public void primesFor10InOrderWithBasicAlgo() throws Exception {
+
+        MvcResult result = mockMvc.perform(get(PRIMES_ENDPOINT + "/10")
+                .param(PARAM_ALGORITHM, ALGORITHM_BASIC_ITER)
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(content().mimeType(MediaType.APPLICATION_JSON))
+                .andExpect(jsonPath("$." + INITIAL).value(10))
+                .andExpect(jsonPath("$." + PRIMES).isArray())
+                .andExpect(jsonPath("$." + PRIMES + "[0]").value(2))
+                .andExpect(jsonPath("$." + PRIMES + "[1]").value(3))
+                .andExpect(jsonPath("$." + PRIMES + "[2]").value(5))
+                .andExpect(jsonPath("$." + PRIMES + "[3]").value(7))
+                .andReturn();
+
+        LOGGER.info(result.getResponse().getContentAsString());
+    }
+
+    @Test
+    public void primesFor5WithParallelAlgo() throws Exception {
+
+        MvcResult result = mockMvc.perform(get(PRIMES_ENDPOINT + "/5")
+                .param(PARAM_ALGORITHM, ALGORITHM_BASIC_PARAL_ITER)
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(content().mimeType(MediaType.APPLICATION_JSON))
+                .andExpect(jsonPath("$." + INITIAL).value(5))
+                .andExpect(jsonPath("$." + PRIMES).isArray())
+                .andExpect(jsonPath("$." + PRIMES + "[2]").value(5))
                 .andReturn();
 
         LOGGER.info(result.getResponse().getContentAsString());
