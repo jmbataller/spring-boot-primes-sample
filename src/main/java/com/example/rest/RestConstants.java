@@ -9,4 +9,5 @@ public interface RestConstants {
 
     String ALGORITHM_BASIC_ITER = "BasicIterative";
     String ALGORITHM_BASIC_PARAL_ITER = "BasicParallelIterative";
+    String ALGORITHM_CACHED_PARAL_ITER = "CachedParallelIterative";
 }

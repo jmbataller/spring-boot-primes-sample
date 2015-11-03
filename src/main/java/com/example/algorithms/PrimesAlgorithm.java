@@ -12,7 +12,7 @@ public enum PrimesAlgorithm {
 
     BasicIterative(PrimesBasicIterativeFunction.newInstance()),
     BasicParallelIterative(PrimesBasicParallelIterativeFunction.newInstance()),
-    BasicRecursive(PrimesRecursiveFunction.newInstance());
+    CachedParallelIterative(PrimesCachedIterativeFunction.newInstance());
 
     private Function<Long, List<Long>> function;
 

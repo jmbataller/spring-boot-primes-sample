@@ -1,5 +1,3 @@
-[![Build Status](https://travis-ci.org/jmbataller/spring-boot-primes-sample.svg?branch=master)](https://travis-ci.org/jmbataller/spring-boot-primes-sample)
-
 # spring-boot-primes-sample
 
 Requirements
@@ -60,8 +58,6 @@ curl --header "Accept: application/xml" http://localhost:8080/primes/10
 
 TODOs:
 ---------------
-- Add http caching headers
-- Write integration and unit tests
 - Add different algorithms:
 	+ Basic - Iterative
 	+ Basic - Iterative with parallelStream
