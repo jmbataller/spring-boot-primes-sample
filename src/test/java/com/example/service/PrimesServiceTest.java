@@ -33,4 +33,28 @@ public class PrimesServiceTest {
         assertTrue(primes.contains(13L));
         assertTrue(primes.contains(19L));
     }
+
+    @Test
+    public void primesFor20ParallelAlgo() {
+        List<Long> primes = primesService.getPrimes(20L, PrimesAlgorithm.BasicParallelIterative);
+        assertTrue(primes.contains(2L));
+        assertTrue(primes.contains(3L));
+        assertTrue(primes.contains(5L));
+        assertTrue(primes.contains(7L));
+        assertTrue(primes.contains(11L));
+        assertTrue(primes.contains(13L));
+        assertTrue(primes.contains(19L));
+    }
+
+    @Test
+    public void primesFor20RecursiveAlgo() {
+        List<Long> primes = primesService.getPrimes(20L, PrimesAlgorithm.BasicRecursive);
+        assertTrue(primes.contains(2L));
+        assertTrue(primes.contains(3L));
+        assertTrue(primes.contains(5L));
+        assertTrue(primes.contains(7L));
+        assertTrue(primes.contains(11L));
+        assertTrue(primes.contains(13L));
+        assertTrue(primes.contains(19L));
+    }
 }

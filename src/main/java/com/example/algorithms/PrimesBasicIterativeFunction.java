@@ -14,7 +14,7 @@ import static java.util.stream.Collectors.toList;
  */
 public class PrimesBasicIterativeFunction implements Function<Long, List<Long>> {
 
-    public PrimesBasicIterativeFunction() {}
+    private PrimesBasicIterativeFunction() {}
 
     public static PrimesBasicIterativeFunction newInstance() {
         return new PrimesBasicIterativeFunction();

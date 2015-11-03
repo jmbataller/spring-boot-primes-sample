@@ -11,7 +11,8 @@ import java.util.function.Function;
 public enum PrimesAlgorithm {
 
     BasicIterative(PrimesBasicIterativeFunction.newInstance()),
-    BasicParallelIterative(PrimesBasicParallelIterativeFunction.newInstance());
+    BasicParallelIterative(PrimesBasicParallelIterativeFunction.newInstance()),
+    BasicRecursive(PrimesRecursiveFunction.newInstance());
 
     private Function<Long, List<Long>> function;
 
