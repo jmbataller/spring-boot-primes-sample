@@ -69,11 +69,11 @@ public class PrimesServiceTest {
     @Test
     public void cacheIsFaster() {
         long firstIni = System.currentTimeMillis();
-        List<Long> primes = primesService.getPrimes(20L, PrimesAlgorithm.CachedParallelIterative);
+        List<Long> primes = primesService.getPrimes(20000L, PrimesAlgorithm.CachedParallelIterative);
         long firstTime = System.currentTimeMillis() - firstIni;
 
         long secondIni = System.currentTimeMillis();
-        primes = primesService.getPrimes(20L, PrimesAlgorithm.CachedParallelIterative);
+        primes = primesService.getPrimes(20000L, PrimesAlgorithm.CachedParallelIterative);
         long secondTime = System.currentTimeMillis() - secondIni;
 
         LOGGER.info(firstTime + " vs " + secondTime);
