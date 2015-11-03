@@ -11,8 +11,9 @@ import java.util.stream.LongStream;
 import static java.util.stream.Collectors.toList;
 
 /**
- * Generate list of primes using an iterative approach (ideal for small numbers)
- *
+ * Generate list of primes using an iterative approach and several threads in parallel.
+ * Also, caches the previous calculations and gets from a memory cache the already
+ * calculated primes (ideal for big numbers)
  * @author jmbataller
  */
 public class PrimesCachedIterativeFunction implements Function<Long, List<Long>> {

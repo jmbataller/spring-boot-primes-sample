@@ -36,30 +36,53 @@ mvn test
 API:
 ---------------
 
-Get primes for a number
+Get primes for a number (by default returns JSON):
 
-Basic (default JSON response):
+*GET http://localhost:8080/primes/{number}*
 
 ```
 curl http://localhost:8080/primes/10
 ```
 
-Basic with JSON response:
+JSON response:
 
 ```
 curl --header "Accept: application/json" http://localhost:8080/primes/10
 ```
 
-Basic with XML response:
+XML response:
 
 ```
 curl --header "Accept: application/xml" http://localhost:8080/primes/10
 ```
 
-TODOs:
+Algorithms:
 ---------------
-- Add different algorithms:
-	+ Basic - Iterative
-	+ Basic - Iterative with parallelStream
-	+ Recursive
-	+ Iterative caching results in a Map
+The API contains different algorithms to generate the primes list:
+
+- *Basic Iterative algorithm* **(default)**
+	
+	Get prime numbers up-to and including the number passed as parameter
+	
+	```
+	curl http://localhost:8080/primes/10?algorithm=BasicIterative
+	```
+
+- *Multi-threading Iterative algorithm* **(ideal for big numbers)**
+	
+	Same as *Basic Iterative algorithm* but uses multi-threading to generate the list of primes.  This algorithm breaks the domain (range between 2 and the number) in sub-groups and creates several threads to process each of the sub-groups.
+	
+	```
+	curl http://localhost:8080/primes/10?algorithm=BasicParallelIterative
+	```
+
+
+- *Multi-threading Iterative with Cache algorithm* **(ideal for repeated requests)**
+
+	Same as *Multi-threading Iterative algorithm* but uses a in-memory cache that is used to store previous calculations. The list of primes is retrieved from the cache when there are repeated requests.
+	
+	```
+	curl http://localhost:8080/primes/10?algorithm=CachedParallelIterative
+	```
+
+	

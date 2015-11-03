@@ -114,18 +114,4 @@ public class PrimesServiceTest {
         assertTrue(secondTime > firstTime);
     }
 
-    @Test
-    public void parallelIsWorseForSmallNums() {
-        long firstIni = System.currentTimeMillis();
-        List<Long> primes = primesService.getPrimes(10L, PrimesAlgorithm.BasicParallelIterative);
-        long firstTime = System.currentTimeMillis() - firstIni;
-
-        long secondIni = System.currentTimeMillis();
-        primes = primesService.getPrimes(10L, PrimesAlgorithm.BasicIterative);
-        long secondTime = System.currentTimeMillis() - secondIni;
-
-        LOGGER.info(firstTime + " vs " + secondTime);
-        assertTrue(secondTime < firstTime);
-    }
-
 }

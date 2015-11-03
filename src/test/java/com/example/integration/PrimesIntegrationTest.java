@@ -107,4 +107,20 @@ public class PrimesIntegrationTest extends AbstractIntegrationTest {
 
         LOGGER.info(result.getResponse().getContentAsString());
     }
+
+    @Test
+    public void primesFor5WithParallelAndCacheAlgo() throws Exception {
+
+        MvcResult result = mockMvc.perform(get(PRIMES_ENDPOINT + "/5")
+                .param(PARAM_ALGORITHM, ALGORITHM_CACHED_PARAL_ITER)
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(content().mimeType(MediaType.APPLICATION_JSON))
+                .andExpect(jsonPath("$." + INITIAL).value(5))
+                .andExpect(jsonPath("$." + PRIMES).isArray())
+                .andExpect(jsonPath("$." + PRIMES + "[2]").value(5))
+                .andReturn();
+
+        LOGGER.info(result.getResponse().getContentAsString());
+    }
 }
