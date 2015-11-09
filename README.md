@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/jmbataller/spring-boot-primes-sample.svg?branch=master)](https://travis-ci.org/jmbataller/spring-boot-primes-sample)
+[![codecov.io](https://codecov.io/github/jmbataller/spring-boot-primes-sample/coverage.svg?branch=master)](https://codecov.io/github/jmbataller/spring-boot-primes-sample?branch=master)
 
 # spring-boot-primes-sample
 
